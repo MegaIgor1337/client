@@ -12,9 +12,10 @@ namespace Client
             TcpClient client = null;
 
         bool exit = false;
-            try
-            {
+           
                 while (true && !exit)
+                {
+                try
                 {
                     int port;
                     bool isPortRight = false;
@@ -169,12 +170,13 @@ namespace Client
                         stream.Close();
                     }
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ошибка: {ex.Message}");
+                    client?.Close();
+                }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ошибка: {ex.Message}");
-                client?.Close();
-            }
+         
         }
     }
 }
